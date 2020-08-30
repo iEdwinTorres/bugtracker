@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'generic_form.css' %}" />
+        <title>Home</title>
+    </head>
+    <body>
+
+        <nav id="nav">
+            <div class="container">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </nav>
+    <body>
+        <div class="container">
+            <div id="form">
+                <h1>{{ headline }}</h1>
+                <form action="" method="post">
+                    {% csrf_token %} {{ form.as_p }}
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

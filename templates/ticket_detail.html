@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'ticket_detail.css' %}" />
+        <title>Home</title>
+    </head>
+    <body>
+        <nav id="nav">
+            <div class="container">
+                <ul>
+                    <a href="/">
+                        <li id="blue"><strong>Home</strong></li>
+                    </a>
+                    <a href="/addticket/">
+                        <li id="blue"><strong>New Ticket</strong></li>
+                    </a>
+                    <a id="right" href="/logout/">
+                        <li id="red"><strong>Logout</strong></li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <table class="table1">
+                <tr>
+                    <th id="title"><p>#{{ info.id }} | {{ info.title }}</p></th>
+                    <th id="action">
+                        <div class="dropdown">
+                            <button class="dropbtn">Actions</button>
+                            <div class="dropdown-content">
+                                <a href="/ticketdetail/{{ info.id }}/edit/">
+                                    Edit
+                                </a>
+                                {% if info.status == "New" %}
+                                <a href="/assignaction/{{ info.id }}/">
+                                    Assign to me
+                                </a>
+                                <a href="/invalidaction/{{ info.id }}/">
+                                    Mark Invalid
+                                </a>
+                                {% endif %} {% if info.status == "In Progress" %}
+                                <a href="/unassignaction/{{ info.id }}/">
+                                    Unassign
+                                </a>
+                                <a href="/completeaction/{{ info.id }}/">
+                                    Mark Complete
+                                </a>
+                                <a href="/invalidaction/{{ info.id }}/">
+                                    Mark Invalid
+                                </a>
+                                {% endif %} {% if info.status == "Done" %}
+                                <a href="/reopenaction/{{ info.id }}/">
+                                    Reopen Ticket
+                                </a>
+                                {% endif %} {% if info.status == "Invalid" %}
+                                <a href="/reopenaction/{{ info.id }}/">
+                                    Reopen Ticket
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            </table>
+            <table class="table2">
+                <tr>
+                    <td id="information"><strong>Information</strong></td>
+                    <td id="description"><strong>Description</strong></td>
+                </tr>
+                <tr>
+                    <td id="infoList">
+                        <strong>Status:</strong>
+                        {{ info.status }}
+                    </td>
+                    <td id="text" rowspan="5">{{ info.description }}</td>
+                </tr>
+                <tr>
+                    <td id="infoList">
+                        <strong>Submitted On:</strong>
+                        {{ info.date }}
+                    </td>
+                </tr>
+                <tr>
+                    <td id="infoList">
+                        <strong>Reported By:</strong>
+                        <a href="/userdetail/{{ info.filed_by.id }}/">
+                            {{ info.filed_by }}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    {% if info.assigned_to %}
+                    <td id="infoList">
+                        <strong>Assigned To:</strong>
+                        <a href="/userdetail/{{ info.assigned_to.id }}/">
+                        {{ info.assigned_to }}
+                        </a>
+                    </td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    {% if info.completed_by %}
+                    <td id="infoListR">
+                        <strong>Completed By:</strong>
+                        <a href="/userdetail/{{ info.completed_by.id }}/">
+                            {{ info.completed_by }}
+                            </a>
+                    </td>
+                    {% endif %}
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

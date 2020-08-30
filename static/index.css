@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+#nav {
+    display: flex;
+    background: #2e4169;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#nav ul {
+    padding: 0;
+    list-style: none;
+    /* width: 80%; */
+}
+#nav li {
+    display: inline;
+    padding: 10px 15px;
+}
+#nav #blue {
+    color: black;
+    background: lightskyblue;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+#nav #red {
+    color: white;
+    background: red;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+#nav #right {
+    float: right;
+}
+#nav em {
+    font-size: 20px;
+}
+#nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+h1 {
+    padding-top: 60px;
+    font-size: 40px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+    text-align: left;
+    padding-left: 30px;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border: 3px solid black;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+th {
+    height: 40px;
+    padding: 5px 10px;
+    text-align: left;
+    border-bottom: 2px solid #000;
+    word-wrap: break-word;
+    font-size: 20px;
+}
+
+td {
+    padding: 5px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+}
+
+#numH {
+    border-right: 2px solid #000;
+    text-align: center;
+    width: 6%;
+}
+#num {
+    border-right: 2px solid #ddd;
+    text-align: center;
+    width: 6%;
+}
+#titleH {
+    border-right: 2px solid #000;
+    width: 40%;
+}
+#title {
+    border-right: 2px solid #ddd;
+    width: 40%;
+}
+#assignedH {
+    border-right: 2px solid #000;
+    text-align: center;
+    width: 17%;
+}
+#assigned {
+    border-right: 2px solid #ddd;
+    text-align: center;
+    width: 17%;
+}
+#reportedH {
+    border-right: 2px solid #000;
+    text-align: center;
+    width: 17%;
+}
+#reported {
+    border-right: 2px solid #ddd;
+    text-align: center;
+    width: 17%;
+}
+#createdH {
+    text-align: center;
+    width: 20%;
+}
+#created {
+    text-align: right;
+    width: 20%;
+}

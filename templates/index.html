@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'index.css' %}" />
+        <title>Home</title>
+    </head>
+    <body>
+        <nav id="nav">
+            <div class="container">
+                <ul>
+                    <a href="/">
+                        <li id="blue"><strong>Home</strong></li>
+                    </a>
+                    <a href="/addticket/">
+                        <li id="blue"><strong>New Ticket</strong></li>
+                    </a>
+                    <a id="right" href="/logout/">
+                        <li id="red"><strong>Logout</strong></li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+
+        <h1 class="container">{{ headline }}</h1>
+
+        <div class="container">
+            <table>
+                <h2>New Tickets</h2>
+                <tr>
+                    <th id="numH">#</th>
+                    <th id="titleH">Title</th>
+                    <th id="assignedH">Assigned To</th>
+                    <th id="reportedH">Reported By</th>
+                    <th id="createdH">Created</th>
+                </tr>
+                {% for uno in new_tickets %}
+                <tr>
+                    <td id="num">{{uno.id}}</td>
+                    <td id="title">
+                        <a href="/ticketdetail/{{ uno.id }}/">{{uno.title}}</a>
+                    </td>
+                    <td id="assigned">
+                        {% if uno.assigned_to %}
+                        <a href="/userdetail/{{ uno.filed_by.id }}/">
+                            {{uno.assigned_to}}
+                        </a>
+                        {% else %} {{uno.assigned_to}} {% endif %}
+                    </td>
+                    <td id="reported">
+                        <a href="/userdetail/{{ uno.filed_by.id }}/">
+                            {{uno.filed_by}}
+                        </a>
+                    </td>
+                    <td id="created">{{uno.date}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="container">
+            <table>
+                <h2>In Progress</h2>
+                <tr>
+                    <th id="num">#</th>
+                    <th id="title">Title</th>
+                    <th id="assigned">Assigned To</th>
+                    <th id="reported">Reported By</th>
+                    <th id="createdH">Created</th>
+                </tr>
+                {% for uno in in_progress_tickets %}
+                <tr>
+                    <td id="num">{{uno.id}}</td>
+                    <td id="title">
+                        <a href="/ticketdetail/{{ uno.id }}/">{{uno.title}}</a>
+                    </td>
+                    <td id="assigned">
+                        {% if uno.assigned_to %}
+                        <a href="/userdetail/{{ uno.assigned_to.id }}/">
+                            {{uno.assigned_to}}
+                        </a>
+                        {% else %} {{uno.assigned_to}} {% endif %}
+                    </td>
+                    <td id="reported">
+                        <a href="/userdetail/{{ uno.filed_by.id }}/">
+                            {{uno.filed_by}}
+                        </a>
+                    </td>
+                    <td id="created">{{uno.date}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="container">
+            <table>
+                <h2>Completed</h2>
+                <tr>
+                    <th id="num">#</th>
+                    <th id="title">Title</th>
+                    <th id="assigned">Assigned To</th>
+                    <th id="reported">Reported By</th>
+                    <th id="createdH">Created</th>
+                </tr>
+                {% for uno in done_tickets %}
+                <tr>
+                    <td id="num">{{uno.id}}</td>
+                    <td id="title">
+                        <a href="/ticketdetail/{{ uno.id }}/">{{uno.title}}</a>
+                    </td>
+                    <td id="assigned">
+                        {% if uno.assigned_to %}
+                        <a href="/userdetail/{{ uno.assigned_to.id }}/">
+                            {{uno.assigned_to}}
+                        </a>
+                        {% else %} {{uno.assigned_to}} {% endif %}
+                    </td>
+                    <td id="reported">
+                        <a href="/userdetail/{{ uno.filed_by.id }}/">
+                            {{uno.filed_by}}
+                        </a>
+                    </td>
+                    <td id="created">{{uno.date}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="container">
+            <table>
+                <h2>Invalid Tickets</h2>
+                <tr>
+                    <th id="num">#</th>
+                    <th id="title">Title</th>
+                    <th id="assigned">Assigned To</th>
+                    <th id="reported">Reported By</th>
+                    <th id="createdH">Created</th>
+                </tr>
+                {% for uno in invalid_tickets %}
+                <tr>
+                    <td id="num">{{uno.id}}</td>
+                    <td id="title">
+                        <a href="/ticketdetail/{{ uno.id }}/">{{uno.title}}</a>
+                    </td>
+                    <td id="assigned">
+                        {% if uno.assigned_to %}
+                        <a href="/userdetail/{{ uno.assigned_to.id }}/">
+                            {{uno.assigned_to}}
+                        </a>
+                        {% else %} {{uno.assigned_to}} {% endif %}
+                    </td>
+                    <td id="reported">
+                        <a href="/userdetail/{{ uno.filed_by.id }}/">
+                            {{uno.filed_by}}
+                        </a>
+                    </td>
+                    <td id="created">{{uno.date}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
