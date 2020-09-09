@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 # from bugtracker_main.settings import AUTH_USER_MODEL
 from bugtracker_app import models, forms
 
- 
+
 @login_required
 def index_view(request):
     tickets = models.Ticket.objects.all()
